@@ -1,0 +1,43 @@
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: CoreProvider
+metadata:
+  name: cluster-api
+  namespace: capi-system
+spec:
+  version: v1.10.0
+---
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: BootstrapProvider
+metadata:
+  name: kubeadm
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  version: v1.10.0
+---
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: ControlPlaneProvider
+metadata:
+  name: kubeadm
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  version: v1.10.0
+---
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: InfrastructureProvider
+metadata:
+  name: gcp
+  namespace: capg-system
+spec:
+  manager:
+    featureGates:
+       GKE: true
+  version: v1.10.0
+  configSecret:
+    name: gcp-credentials
+  deployment: {}
+  #  containers:
+  #    - name: manager
+  #      env:
+  #        - name: EXP_CAPG_GKE
+  #          value: "true"
+
