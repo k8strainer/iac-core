@@ -3,6 +3,8 @@ kind: CoreProvider
 metadata:
   name: cluster-api
   namespace: capi-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   version: v1.10.2
 ---
@@ -11,6 +13,8 @@ kind: BootstrapProvider
 metadata:
   name: kubeadm
   namespace: capi-kubeadm-bootstrap-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   version: v1.10.2
 ---
@@ -19,6 +23,8 @@ kind: ControlPlaneProvider
 metadata:
   name: kubeadm
   namespace: capi-kubeadm-control-plane-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   version: v1.10.2
 ---
@@ -27,6 +33,8 @@ kind: InfrastructureProvider
 metadata:
   name: gcp
   namespace: capg-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" 
 spec:
   manager:
     featureGates:
